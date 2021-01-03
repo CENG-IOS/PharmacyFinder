@@ -1,4 +1,5 @@
 package edu.eskisehir;
+
 import java.time.LocalDate;
 import java.util.*;
 
@@ -91,6 +92,7 @@ public class WorldMap {
         int beginningLat;
         int endLot;
         int beginningLot;
+
         if (latitudeEnd >= gps.getCity().cityMap.length)
             endLat = gps.getCity().cityMap.length - 1;
         else
@@ -104,6 +106,11 @@ public class WorldMap {
             endLot = longitudeEnd;
 
         beginningLot = Math.max(longitudeBeginning, 0);
+
+        if (endLat == 9 && beginningLat == 0 && endLot == 9 && beginningLot == 0) {
+            System.out.println("There is no pharmacy found in the city.");
+            System.exit(0);
+        }
 
         for (int i = beginningLat; i <= endLat; i++) {
             for (int j = beginningLot; j <= endLot; j++) {
