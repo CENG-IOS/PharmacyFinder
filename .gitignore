@@ -1,7 +1,6 @@
 target/
 *.pdf
 .idea/
-*.xml/
 
 # Compiled class file
 *.class
