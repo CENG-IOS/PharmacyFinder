@@ -1,3 +1,3 @@
 # PharmacyFinder
 -mvn clean package\
--java -jar target\Pharmacy.jar
+-java -jar target\bim209hw.jar
