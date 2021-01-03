@@ -13,7 +13,6 @@ public class Test {
      */
     static GPS person1 = new GPS(3, 5, worldMap.city1, LocalDate.of(2021, 1, 4));
     static GPS person2 = new GPS(3, 5, worldMap.city2, LocalDate.of(2021, 1, 4));
-    static GPS person3 = new GPS(8, 1, worldMap.city2, LocalDate.of(2021, 1, 22));
 
     /**
      * user enters the date and city and by entering
@@ -91,7 +90,7 @@ public class Test {
         System.out.println(">The user enters a date for when to search pharmacies:");
         System.out.println(destination.getDate().toString());
         System.out.println(">The user enters a city for where to search pharmacies:");
-        System.out.println(person3.getCity().getName());
+        System.out.println(destination.getCity().getName());
 
         if (worldMap.perceiveDestination(destination)) {
             System.out.println(">Scanning the city on the given date: ");
