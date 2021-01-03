@@ -1,3 +1,3 @@
 # PharmacyFinder
 -mvn clean package\
--java -jar target\pharmacy.jar
+-java -jar target\Pharmacy.jar
