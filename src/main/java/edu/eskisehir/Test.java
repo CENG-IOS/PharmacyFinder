@@ -1,4 +1,5 @@
 package edu.eskisehir;
+
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.Map;
@@ -31,9 +32,8 @@ public class Test {
         System.out.println("┌────────────────────────────────────────────────────────────────┐");
         System.out.println("│ Use Case 1 ----> Finding the nearest pharmacy with navigation: │");
         System.out.println("└────────────────────────────────────────────────────────────────┘");
-        if (person1.isGPSon()) {
-            System.out.println(">GPS is activated.");
-            worldMap.perceiveLocation(person1);
+        System.out.println(">GPS is activated.");
+        if (worldMap.perceiveLocation(person1)) {
             City foundCity = worldMap.searchCity(person1.getCity().getName());
             City.printCityMap(foundCity);
             System.out.println(">Scanning...");
@@ -47,11 +47,12 @@ public class Test {
             System.out.println(">The closest pharmacy to your position:");
             Pharmacy closestPharmacy = worldMap.markOnMap(pharmaciesDistances);
             if (closestPharmacy != null) {
-                printPharmacyOnMapAndDisplayRoad(closestPharmacy,foundCity);
+                printPharmacyOnMapAndDisplayRoad(closestPharmacy, foundCity);
 
             }
-        } else
-            System.out.println("There is no pharmacy found in your city.");
+            else
+                System.out.println(">There is no pharmacy found in your city.");
+        }
 
 
         /**
@@ -62,7 +63,7 @@ public class Test {
         System.out.println("└───────────────────────────────────────────────────────────────────────────────┘");
 
         System.out.println(">GPS is activated.");
-        if (worldMap.perceiveDestination(destination2) && worldMap.perceiveLocation(person2)) {
+        if (worldMap.perceiveDestination(destination2) && worldMap.perceiveLocation(person2) && destination2.getCity().equals(person2.getCity())) {
             City foundCity = worldMap.searchCity(person2.getCity().getName());
             City.printCityMap(foundCity);
             System.out.println(">The application surrounds two locations on the map as one circle.");
@@ -76,9 +77,9 @@ public class Test {
             System.out.println(">The closest pharmacy to your position: ");
             Pharmacy closestPharmacy = worldMap.markOnMap(pharmacyDistances);
             if (closestPharmacy != null) {
-                printPharmacyOnMapAndDisplayRoad(closestPharmacy,foundCity);
+                printPharmacyOnMapAndDisplayRoad(closestPharmacy, foundCity);
             } else
-                System.out.println("There is no pharmacy found in your city.");
+                System.out.println(">There is no pharmacy found in your city.");
         }
 
         /**
@@ -103,7 +104,7 @@ public class Test {
                     System.out.println(onDutyPharmacy.displayInformation());
                 }
             } else
-                System.out.println("No pharmacies found according to your destination information. ");
+                System.out.println(">No pharmacies found according to your destination information. ");
         }
 
 
@@ -236,9 +237,9 @@ public class Test {
             System.out.println("│");
         }
         System.out.println("└──────────────────────────────┘");
-        System.out.println(">closestPharmacy displayInformation");
+        System.out.println(">Displaying closest pharmacy information: ");
         System.out.println(closestPharmacy.displayInformation());
-        System.out.println(">how to go to the pharmacy: ");
+        System.out.println(">How to go to the pharmacy: ");
         worldMap.displayRoad(closestPharmacy, person1);
         System.out.println(">The user goes to that location.");
         System.out.println();
